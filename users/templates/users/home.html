@@ -1,0 +1,21 @@
+{% extends 'main.html' %} {% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="logout-btn">Logout</button>
+</form>
+<form action="{% url 'delete' user.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+
+<div class="home-img">
+    <h3>Hello {{ user.username }},</h3>
+    <img src="{% static 'imgs/greet.png' %}" alt="">
+</div>
+
+{% endblock content %}
